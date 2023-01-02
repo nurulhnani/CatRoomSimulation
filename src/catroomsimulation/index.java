@@ -30,6 +30,7 @@ public class index extends javax.swing.JFrame {
         setupCatNameLabel();
         setupCatIcon();
         setupBgDefaulfIcon();
+        setUpHealthProgressBar();
     }
     
     private void setupCatNameLabel(){
@@ -52,6 +53,11 @@ public class index extends javax.swing.JFrame {
         bgLabel.setText("");
         bgLabel.setIcon(new ImageIcon(getClass().getResource("resources/catroom.jpg")));
     }
+    
+    private void setUpHealthProgressBar() {
+        Health health = new HealthDecreaser(HealthProgressBar);
+        health.healthProgress();
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -65,6 +71,12 @@ public class index extends javax.swing.JFrame {
         VolumUpButton = new javax.swing.JButton();
         musicButton = new javax.swing.JButton();
         musicBox = new javax.swing.JComboBox<>();
+        HealthProgressBar = new javax.swing.JProgressBar();
+        HealthPanel = new javax.swing.JPanel();
+        HealthLabel = new javax.swing.JLabel();
+        patButton = new javax.swing.JButton();
+        FoodButton1 = new javax.swing.JButton();
+        MilkButton = new javax.swing.JButton();
         bgLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -127,6 +139,42 @@ public class index extends javax.swing.JFrame {
         });
         getContentPane().add(musicBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 690, 80, 30));
 
+        HealthProgressBar.setValue(50);
+        getContentPane().add(HealthProgressBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 200, -1));
+
+        HealthPanel.setBackground(new java.awt.Color(222, 222, 222));
+
+        HealthLabel.setBackground(new java.awt.Color(0, 0, 0));
+        HealthLabel.setForeground(new java.awt.Color(0, 0, 0));
+        HealthLabel.setText("Health");
+        HealthPanel.add(HealthLabel);
+
+        getContentPane().add(HealthPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 220, 40));
+
+        patButton.setText("Pat");
+        patButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                patButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(patButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 560, 80, -1));
+
+        FoodButton1.setText("Food");
+        FoodButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FoodButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(FoodButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 640, 80, -1));
+
+        MilkButton.setText("Milk");
+        MilkButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MilkButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(MilkButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 600, 80, -1));
+
         bgLabel.setText("bgImage");
         bgLabel.setPreferredSize(new java.awt.Dimension(500, 750));
         getContentPane().add(bgLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 750));
@@ -179,6 +227,24 @@ public class index extends javax.swing.JFrame {
         isPlaying = !isPlaying;
     }//GEN-LAST:event_musicBoxActionPerformed
 
+    private void patButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patButtonActionPerformed
+        Health health = new Pat(HealthProgressBar);
+        health.healthProgress();
+        System.out.println("Pat clicked");
+    }//GEN-LAST:event_patButtonActionPerformed
+
+    private void FoodButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FoodButton1ActionPerformed
+        Health health1 = new Food(HealthProgressBar);
+        health1.healthProgress();
+        System.out.println("Food clicked");
+    }//GEN-LAST:event_FoodButton1ActionPerformed
+
+    private void MilkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MilkButtonActionPerformed
+        Health health3 = new Milk(HealthProgressBar);
+        health3.healthProgress();
+        System.out.println("Milk clicked");
+    }//GEN-LAST:event_MilkButtonActionPerformed
+
 
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -212,6 +278,11 @@ public class index extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton FoodButton1;
+    public javax.swing.JLabel HealthLabel;
+    public javax.swing.JPanel HealthPanel;
+    public javax.swing.JProgressBar HealthProgressBar;
+    public javax.swing.JButton MilkButton;
     private javax.swing.JButton VolumDownButton;
     private javax.swing.JButton VolumUpButton;
     private javax.swing.JComboBox<String> bgBox;
@@ -221,6 +292,7 @@ public class index extends javax.swing.JFrame {
     private javax.swing.JButton exitButton;
     private javax.swing.JComboBox<String> musicBox;
     private javax.swing.JButton musicButton;
+    public javax.swing.JButton patButton;
     // End of variables declaration//GEN-END:variables
 
 }
