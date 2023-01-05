@@ -7,6 +7,7 @@ public class index extends javax.swing.JFrame {
     private String catName;
     private String catType;
     SimpleBackgroundFactory factory;
+    private String time = "Day";
     
     // Singleton method -- Setup background music
     musicPlayerSingleton player = musicPlayerSingleton.getInstance();
@@ -77,6 +78,7 @@ public class index extends javax.swing.JFrame {
         patButton = new javax.swing.JButton();
         FoodButton1 = new javax.swing.JButton();
         MilkButton = new javax.swing.JButton();
+        timeButton = new javax.swing.JButton();
         bgLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -145,7 +147,6 @@ public class index extends javax.swing.JFrame {
         HealthPanel.setBackground(new java.awt.Color(222, 222, 222));
 
         HealthLabel.setBackground(new java.awt.Color(0, 0, 0));
-        HealthLabel.setForeground(new java.awt.Color(0, 0, 0));
         HealthLabel.setText("Health");
         HealthPanel.add(HealthLabel);
 
@@ -175,6 +176,17 @@ public class index extends javax.swing.JFrame {
         });
         getContentPane().add(MilkButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 600, 80, -1));
 
+        timeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/catroomsimulation/resources/dayMode.png"))); // NOI18N
+        timeButton.setMaximumSize(new java.awt.Dimension(50, 50));
+        timeButton.setMinimumSize(new java.awt.Dimension(50, 50));
+        timeButton.setPreferredSize(new java.awt.Dimension(50, 50));
+        timeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                timeButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(timeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 680, -1, -1));
+
         bgLabel.setText("bgImage");
         bgLabel.setPreferredSize(new java.awt.Dimension(500, 750));
         getContentPane().add(bgLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 750));
@@ -187,10 +199,12 @@ public class index extends javax.swing.JFrame {
     }//GEN-LAST:event_exitButtonActionPerformed
 
     private void bgBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bgBoxActionPerformed
-        ImageIcon bgImg;
+        ImageIcon bgImg ;
+        Background bg;
         
         String selectedPlace = bgBox.getSelectedItem().toString();
-        bgImg = factory.createBackground(selectedPlace);
+        bg = factory.createBackground(time);
+        bgImg = factory.getBackground(selectedPlace, bg);              
         bgLabel.setIcon(bgImg);
     }//GEN-LAST:event_bgBoxActionPerformed
 
@@ -245,6 +259,25 @@ public class index extends javax.swing.JFrame {
         System.out.println("Milk clicked");
     }//GEN-LAST:event_MilkButtonActionPerformed
 
+    private void timeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timeButtonActionPerformed
+        if(time == "Night"){
+            timeButton.setIcon(new ImageIcon(getClass().getResource("resources/dayMode.png")));
+            time = "Day";
+        }else{
+            timeButton.setIcon(new ImageIcon(getClass().getResource("resources/nightMode.png")));
+            time = "Night";
+        } 
+        
+        ImageIcon bgImg ;
+        Background bg;
+        
+        String selectedPlace = bgBox.getSelectedItem().toString();
+        bg = factory.createBackground(time);
+        bgImg = factory.getBackground(selectedPlace, bg);              
+        bgLabel.setIcon(bgImg);
+        
+    }//GEN-LAST:event_timeButtonActionPerformed
+
 
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -293,6 +326,7 @@ public class index extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> musicBox;
     private javax.swing.JButton musicButton;
     public javax.swing.JButton patButton;
+    private javax.swing.JButton timeButton;
     // End of variables declaration//GEN-END:variables
 
 }

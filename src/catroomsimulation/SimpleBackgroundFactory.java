@@ -1,30 +1,50 @@
 package catroomsimulation;
 
+//import javax.swing.ImageIcon;
+
 import javax.swing.ImageIcon;
 
+
 public class SimpleBackgroundFactory {
-    public ImageIcon createBackground(String selectedPlace){
-        ImageIcon bgImg = null;
+    
+    public Background createBackground(String selectedTime){
+        Background bg = null;
         
-        switch(selectedPlace) {
-          case "Cat Room":
-              bgImg = new ImageIcon(getClass().getResource("resources/catroom.jpg"));
+        switch(selectedTime) {
+          case "Day":
+              bg = new DayBackground();
               break;
-          case "Bed Room":
-              bgImg = new ImageIcon(getClass().getResource("resources/bedroom.jpg"));
-              break;
-          case "Park":
-              bgImg = new ImageIcon(getClass().getResource("resources/park.jpg"));
-              break;
-          case "Living Room":
-              bgImg = new ImageIcon(getClass().getResource("resources/livingroom.jpg"));
-              break;
-          case "Play Room":
-              bgImg = new ImageIcon(getClass().getResource("resources/playroom.jpg"));
+          case "Night":
+              bg = new NightBackground();
               break;
           default:
             break;
         }  
+    return bg;        
+    }
+    
+    public ImageIcon getBackground(String selectedPlace, Background bg){
+        ImageIcon bgImg = null;
+        
+        switch(selectedPlace) {
+          case "Cat Room":
+                bgImg = bg.CatRoom();
+              break;
+            case "Bed Room":
+                bgImg = bg.BedRoom();
+              break;
+            case "Park":
+                bgImg = bg.Park();
+              break;
+            case "Living Room":
+                bgImg = bg.LivingRoom();
+              break;
+            case "Play Room":
+                bgImg = bg.PlayRoom();
+              break;
+            default:
+                bgImg = bg.CatRoom();
+                break;        }  
     return bgImg;        
     }    
 }
