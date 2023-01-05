@@ -7,12 +7,13 @@ public class CatRoom extends javax.swing.JFrame {
     private String catName;
     private String catType;
     SimpleBackgroundFactory factory;
+    private String time = "Day";
     
     // Singleton method -- Setup background music
     musicPlayerSingleton player = musicPlayerSingleton.getInstance();
     static long clipTimePosition;
     static boolean isPlaying = true;
-
+    
     public CatRoom() {
         initComponents();
     }
@@ -76,8 +77,8 @@ public class CatRoom extends javax.swing.JFrame {
         toyLabel = new javax.swing.JLabel();
         exitButton = new javax.swing.JButton();
         bgBox = new javax.swing.JComboBox<>();
-        catLabel = new javax.swing.JLabel();
         VolumDownButton = new javax.swing.JButton();
+        catLabel = new javax.swing.JLabel();
         VolumUpButton = new javax.swing.JButton();
         musicButton = new javax.swing.JButton();
         musicBox = new javax.swing.JComboBox<>();
@@ -92,6 +93,7 @@ public class CatRoom extends javax.swing.JFrame {
         PatButton = new javax.swing.JButton();
         PlayButton = new javax.swing.JButton();
         bgLabel = new javax.swing.JLabel();
+        timeButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -121,9 +123,6 @@ public class CatRoom extends javax.swing.JFrame {
         });
         getContentPane().add(bgBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 200, 30));
 
-        catLabel.setText("catImage");
-        getContentPane().add(catLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, 320, 340));
-
         VolumDownButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/catroomsimulation/resources/volumeDown.png"))); // NOI18N
         VolumDownButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -131,6 +130,9 @@ public class CatRoom extends javax.swing.JFrame {
             }
         });
         getContentPane().add(VolumDownButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 690, 40, 30));
+
+        catLabel.setText("catImage");
+        getContentPane().add(catLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, 320, 340));
 
         VolumUpButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/catroomsimulation/resources/volumeUp.png"))); // NOI18N
         VolumUpButton.addActionListener(new java.awt.event.ActionListener() {
@@ -198,9 +200,6 @@ public class CatRoom extends javax.swing.JFrame {
         MoodPanel.getAccessibleContext().setAccessibleName("");
 
         PatButton.setLabel("Pat");
-        PatButton.setMaximumSize(new java.awt.Dimension(49, 23));
-        PatButton.setMinimumSize(new java.awt.Dimension(49, 23));
-        PatButton.setPreferredSize(new java.awt.Dimension(49, 23));
         PatButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PatButtonActionPerformed(evt);
@@ -223,6 +222,17 @@ public class CatRoom extends javax.swing.JFrame {
         bgLabel.setPreferredSize(new java.awt.Dimension(500, 750));
         getContentPane().add(bgLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 750));
 
+        timeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/catroomsimulation/resources/dayMode.png"))); // NOI18N
+        timeButton.setMaximumSize(new java.awt.Dimension(50, 50));
+        timeButton.setMinimumSize(new java.awt.Dimension(50, 50));
+        timeButton.setPreferredSize(new java.awt.Dimension(50, 50));
+        timeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                timeButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(timeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 680, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -231,10 +241,12 @@ public class CatRoom extends javax.swing.JFrame {
     }//GEN-LAST:event_exitButtonActionPerformed
 
     private void bgBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bgBoxActionPerformed
-        ImageIcon bgImg;
+        ImageIcon bgImg ;
+        Background bg;
         
         String selectedPlace = bgBox.getSelectedItem().toString();
-        bgImg = factory.createBackground(selectedPlace);
+        bg = factory.createBackground(time);
+        bgImg = factory.getBackground(selectedPlace, bg);              
         bgLabel.setIcon(bgImg);
     }//GEN-LAST:event_bgBoxActionPerformed
 
@@ -299,6 +311,24 @@ public class CatRoom extends javax.swing.JFrame {
         System.out.println("Play clicked - increase Mood by 2 pts");
     }//GEN-LAST:event_PatButtonActionPerformed
 
+    private void timeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timeButtonActionPerformed
+        if(time == "Night"){
+            timeButton.setIcon(new ImageIcon(getClass().getResource("resources/dayMode.png")));
+            time = "Day";
+        }else{
+            timeButton.setIcon(new ImageIcon(getClass().getResource("resources/nightMode.png")));
+            time = "Night";
+        } 
+        
+        ImageIcon bgImg ;
+        Background bg;
+        
+        String selectedPlace = bgBox.getSelectedItem().toString();
+        bg = factory.createBackground(time);
+        bgImg = factory.getBackground(selectedPlace, bg);              
+        bgLabel.setIcon(bgImg);
+    }//GEN-LAST:event_timeButtonActionPerformed
+
 
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -352,6 +382,7 @@ public class CatRoom extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JComboBox<String> musicBox;
     private javax.swing.JButton musicButton;
+    private javax.swing.JButton timeButton;
     public javax.swing.JLabel toyLabel;
     // End of variables declaration//GEN-END:variables
 
