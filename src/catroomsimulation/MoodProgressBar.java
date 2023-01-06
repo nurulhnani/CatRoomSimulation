@@ -17,7 +17,7 @@ public class MoodProgressBar extends SwingWorker<Void, Void> {
       while (MoodProgressBar.getValue() >= 0) {
           // Update the progress bar using the setProgress() method
           Mood mood = new MoodProgress(MoodProgressBar);
-          mood.setMood();
+          mood.setMood(-1);
 //          int progress = MoodProgressBar.getValue() - 1;
 //          MoodProgressBar.setValue(progress);
 //          if (MoodProgressBar.getValue() >= 40)

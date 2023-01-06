@@ -4,16 +4,16 @@ import catroomsimulation.MoodDecorator;
 import catroomsimulation.Mood;
 import javax.swing.JProgressBar;
 
-public class PatMood extends MoodDecorator{
+public class PatMood extends MoodDecorator {
     
-    public PatMood(Mood mood, JProgressBar MoodProgressBar) {
+    public PatMood(Mood mood) {
         super(mood);
-        mood.setMoodProgressBar(MoodProgressBar);
-    }
+    }  
+
     
     @Override
-    public JProgressBar setMood() {
-        return mood.increaseMood(2);
+    public JProgressBar setMood(int val) {
+        return mood.setMood(val);
     }
 
 }

@@ -106,7 +106,7 @@ public class MainPage extends javax.swing.JFrame {
         //initiliaze background factory
         SimpleBackgroundFactory factory = new SimpleBackgroundFactory();
         
-        index indexFrame = new index(catNameField.getText(), catRadioGroup.getSelection().getActionCommand(), factory);
+        CatRoom indexFrame = new CatRoom(catNameField.getText(), catRadioGroup.getSelection().getActionCommand(), factory);
         this.setVisible(false);
         indexFrame.setVisible(true);
     }//GEN-LAST:event_startButtonActionPerformed

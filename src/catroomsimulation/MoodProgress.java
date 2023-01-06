@@ -9,12 +9,9 @@ public class MoodProgress extends Mood {
     }
 
     @Override
-    public JProgressBar setMood() {
-        MoodProgressBar.setValue(MoodProgressBar.getValue() - 1);
+    public JProgressBar setMood(int val) {
+        MoodProgressBar.setValue(MoodProgressBar.getValue()+ val);
         return this.MoodProgressBar;
-    }
-    
-    
-        
+    }      
 
 }

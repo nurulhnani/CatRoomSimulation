@@ -298,16 +298,18 @@ public class CatRoom extends javax.swing.JFrame {
     }//GEN-LAST:event_MilkButtonActionPerformed
 
     private void PlayButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlayButtonActionPerformed
-        Mood mood = new Play (new MoodProgress(MoodProgressBar),MoodProgressBar);
-        mood.setMood();
+        int val = 3;
+        MoodDecorator mooddecorator = new MoodDecorator(new PlayMood(new MoodProgress(MoodProgressBar)));
+        mooddecorator.setMood(val);
         System.out.println("Play clicked - increase Mood by 3 pts");
         toyLabel.setIcon(new ImageIcon(getClass().getResource("resources/mouse.gif")));
     }//GEN-LAST:event_PlayButtonActionPerformed
 
     private void PatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PatButtonActionPerformed
         toyLabel.setIcon(null);
-        Mood mood = new PatMood (new MoodProgress(MoodProgressBar),MoodProgressBar);
-        mood.setMood();
+        int val = 2;
+        MoodDecorator mooddecorator = new MoodDecorator(new PatMood(new MoodProgress(MoodProgressBar)));
+        mooddecorator.setMood(val);
         System.out.println("Play clicked - increase Mood by 2 pts");
     }//GEN-LAST:event_PatButtonActionPerformed
 
