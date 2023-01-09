@@ -1,7 +1,13 @@
 package catroomsimulation;
 
+import javax.swing.JLabel;
+import javax.swing.JProgressBar;
+
 public abstract class Health {
 
-    public abstract void healthProgress();
+    JProgressBar pb;
+    
+    public abstract JProgressBar setHealth(int val);
+    
     
 }

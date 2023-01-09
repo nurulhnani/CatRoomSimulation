@@ -1,20 +1,22 @@
 package catroomsimulation;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JLabel;
 import javax.swing.JProgressBar;
+import javax.swing.Timer;
 
-public abstract class HealthDecorator extends Health{
+public class HealthDecorator extends Health{
 
-    private int healthPoint = 0;
+    Health health;
     
-    JProgressBar pb;
+    public HealthDecorator(Health health) {
+        this.health = health;
+    }
     
     @Override
-    public  void healthProgress() {
-        increaseHealth(healthPoint);
+    public JProgressBar setHealth(int val){
+        return health.setHealth(val);
     }
-        
-    public void increaseHealth(int value){
-        pb.setValue(pb.getValue() + value);
-    }
-
+    
 }

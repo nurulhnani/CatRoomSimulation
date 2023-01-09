@@ -4,12 +4,12 @@ import javax.swing.JProgressBar;
 
 public class Milk extends HealthDecorator{
     
-    Milk(JProgressBar HealthProgressBar) {
-        pb = HealthProgressBar;
+    Milk(Health health) {
+        super(health);
     }
     
     @Override
-    public  void healthProgress() {
-        increaseHealth(2);
+    public JProgressBar setHealth(int val) {
+        return health.setHealth(val);
     }
 }

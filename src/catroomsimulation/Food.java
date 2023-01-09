@@ -2,14 +2,15 @@ package catroomsimulation;
 
 import javax.swing.JProgressBar;
 
+
 public class Food extends HealthDecorator{
     
-    Food(JProgressBar HealthProgressBar) {
-        pb = HealthProgressBar;
+    Food(Health health) {
+        super(health);
     }
     
     @Override
-    public  void healthProgress() {
-        increaseHealth(10);
+    public JProgressBar setHealth(int val) {
+         return health.setHealth(val);
     }
 }

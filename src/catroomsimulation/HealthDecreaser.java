@@ -1,19 +1,27 @@
 package catroomsimulation;
 
 import javax.swing.JProgressBar;
+import javax.swing.SwingWorker;
 
-public class HealthDecreaser extends Health {
+public class HealthDecreaser extends SwingWorker<Void, Void> {
 
-    private JProgressBar hpb;
+    private JProgressBar pb;
+    int reductionVal = 0;
 
-    public HealthDecreaser(JProgressBar HealthProgressBar) {
-        this.hpb = HealthProgressBar;
+    public HealthDecreaser(JProgressBar HealthProgressBar, int val) {
+        this.pb = HealthProgressBar;
+        this.reductionVal = val;
     }
-    
+
     @Override
-    public void healthProgress() {
-        ProgressBarDecreaser pb = new ProgressBarDecreaser(hpb);
-        pb.execute();
-    }
+    protected Void doInBackground() throws Exception {
+    // Perform a time-consuming task
+      while (pb.getValue() >= 0) {
+          // Update the progress bar using the setProgress() method
+          pb.setValue(pb.getValue() - reductionVal);
+          Thread.sleep(1000);
+          System.out.println("Health decrease to "+pb.getValue());
+      }
+      return null;}
      
 }
