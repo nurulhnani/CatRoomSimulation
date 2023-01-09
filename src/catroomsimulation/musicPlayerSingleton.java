@@ -11,14 +11,14 @@ import javax.swing.JOptionPane;
 public class musicPlayerSingleton {
 
     //musicplayer - uniqueInstance
-    static musicPlayerSingleton musicplayer;
+    private static musicPlayerSingleton musicplayer;
     
     static Clip clip;
     float previousVolume = 0;
     float currentVolume = 0;
     static FloatControl fc;
 
-    public musicPlayerSingleton() {
+    private musicPlayerSingleton() {
     }
     
     public static musicPlayerSingleton getInstance(){
