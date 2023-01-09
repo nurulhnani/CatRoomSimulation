@@ -103,12 +103,21 @@ public class MainPage extends javax.swing.JFrame {
         blackCatRadio.setActionCommand("blackCat");
         whiteCatRadio.setActionCommand("whiteCat");
         
-        //initiliaze background factory
-        SimpleBackgroundFactory factory = new SimpleBackgroundFactory();
+        String name = catNameField.getText();
+        String type = catRadioGroup.getSelection().getActionCommand();
         
-        CatRoom indexFrame = new CatRoom(catNameField.getText(), catRadioGroup.getSelection().getActionCommand(), factory);
+        //Facade 
+        Cat cat = new Cat();
+        DefaultRoomSetting defaultRoomSetting = new DefaultRoomSetting();
+        
+        //Simple Factory
+        SimpleBackgroundFactory factory = new SimpleBackgroundFactory();
+
+        
+        CatRoom catRoom = new CatRoom(cat, name, type, defaultRoomSetting, factory);
         this.setVisible(false);
-        indexFrame.setVisible(true);
+        catRoom.setVisible(true);
+        catRoom.setup();
     }//GEN-LAST:event_startButtonActionPerformed
 
  

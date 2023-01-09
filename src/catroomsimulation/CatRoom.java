@@ -6,10 +6,14 @@ import java.awt.event.ActionListener;
 
 public class CatRoom extends javax.swing.JFrame {
     
-    private String catName;
-    private String catType;
-    SimpleBackgroundFactory factory;
+    private String name;
+    private String type;
     private String time = "Day";
+    Cat cat;
+    DefaultRoomSetting defaultRoomSetting;
+    SimpleBackgroundFactory factory;
+    ImageIcon bgImg ;
+    Background bg;
     
     // Singleton method -- Setup background music
     musicPlayerSingleton player = musicPlayerSingleton.getInstance();
@@ -20,56 +24,24 @@ public class CatRoom extends javax.swing.JFrame {
         initComponents();
     }
     
-    public CatRoom(String catName, String catType, SimpleBackgroundFactory factory){
-        this.catName = catName;
-        this.catType = catType;
+    public CatRoom(Cat cat, String name, String type, DefaultRoomSetting defaultRoomSetting, SimpleBackgroundFactory factory){
+        this.name = name;
+        this.type = type;
         this.factory = factory;
-        setupCatRoom();
-    }
-    
-    //Template Method -- to setup default cat room
-    final void setupCatRoom() {
+        this.cat = cat;
+        this.defaultRoomSetting = defaultRoomSetting;
         initComponents();
-        setupCatNameLabel();
-        setupCatIcon();
-        setupBgDefaulfIcon();
-        setUpHealthProgressBar();
-        setUpMoodProgressBar();
     }
     
-    private void setupCatNameLabel(){
-        catNameLabel.setText("Hi " + catName + " ♡");
+    //Facade -- to setup default cat room
+    public void setup() {
+        cat.setName(catNameLabel, name);
+        cat.setType(catLabel, type);
+        defaultRoomSetting.setBackground(bgLabel, toyLabel);
+        defaultRoomSetting.setHealthProgressBar(HealthProgressBar);
+        defaultRoomSetting.setMoodProgressBar(MoodProgressBar);
     }
-    
-    private void setupCatIcon(){
-        catLabel.setText("");
-        switch(catType) {
-          case "blackCat":
-              catLabel.setIcon(new ImageIcon(getClass().getResource("resources/blackCat.png")));
-              break;
-          case "whiteCat":
-              catLabel.setIcon(new ImageIcon(getClass().getResource("resources/whiteCat.png")));
-              break;
-        }      
-    }
-    
-    private void setupBgDefaulfIcon(){
-        bgLabel.setText("");
-        toyLabel.setText("");
-        bgLabel.setIcon(new ImageIcon(getClass().getResource("resources/catroom.jpg")));
-    }
-    
-    private void setUpHealthProgressBar() {
-        Health health = new HealthProgressDecrease(HealthProgressBar);
-        health.setHealth(1);
-    }
-    
-    private void setUpMoodProgressBar(){
-        MoodProgressBar mood = new MoodProgressBar(MoodProgressBar);
-        mood.execute();
-    }
-    
-    
+      
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -263,9 +235,6 @@ public class CatRoom extends javax.swing.JFrame {
     }//GEN-LAST:event_exitButtonActionPerformed
 
     private void bgBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bgBoxActionPerformed
-        ImageIcon bgImg ;
-        Background bg;
-        
         String selectedPlace = bgBox.getSelectedItem().toString();
         bg = factory.createBackground(time);
         bgImg = factory.getBackground(selectedPlace, bg);              
@@ -313,10 +282,7 @@ public class CatRoom extends javax.swing.JFrame {
             timeButton.setIcon(new ImageIcon(getClass().getResource("resources/nightMode.png")));
             time = "Night";
         } 
-        
-        ImageIcon bgImg ;
-        Background bg;
-        
+                
         String selectedPlace = bgBox.getSelectedItem().toString();
         bg = factory.createBackground(time);
         bgImg = factory.getBackground(selectedPlace, bg);              
@@ -446,8 +412,8 @@ public class CatRoom extends javax.swing.JFrame {
     private javax.swing.JButton VolumUpButton;
     private javax.swing.JComboBox<String> bgBox;
     private javax.swing.JLabel bgLabel;
-    private javax.swing.JLabel catLabel;
-    private javax.swing.JLabel catNameLabel;
+    public javax.swing.JLabel catLabel;
+    public javax.swing.JLabel catNameLabel;
     private javax.swing.JButton exitButton;
     public javax.swing.JLabel foodLabelImg;
     private javax.swing.JLabel jLabel1;
