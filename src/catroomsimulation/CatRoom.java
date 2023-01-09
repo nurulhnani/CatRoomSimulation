@@ -83,9 +83,10 @@ public class CatRoom extends javax.swing.JFrame {
         HealthIncreaseIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/catroomsimulation/resources/health_icon.png"))); // NOI18N
         getContentPane().add(HealthIncreaseIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 390, -1, -1));
 
+        catNameLabel.setBackground(new java.awt.Color(229, 229, 229));
         catNameLabel.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        catNameLabel.setForeground(new java.awt.Color(255, 255, 255));
         catNameLabel.setText("Cat Name");
+        catNameLabel.setOpaque(true);
         getContentPane().add(catNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         toyLabel.setText("toyImage");
