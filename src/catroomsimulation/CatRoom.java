@@ -1,30 +1,33 @@
 package catroomsimulation;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
+import org.netbeans.lib.awtextra.AbsoluteConstraints;
 
 public class CatRoom extends javax.swing.JFrame {
-    
+
     private String name;
     private String type;
     private String time = "Day";
     Cat cat;
     DefaultRoomSetting defaultRoomSetting;
     SimpleBackgroundFactory factory;
-    ImageIcon bgImg ;
+    ImageIcon bgImg;
     Background bg;
-    
+
     // Singleton method -- Setup background music
     musicPlayerSingleton player = musicPlayerSingleton.getInstance();
     static long clipTimePosition;
     static boolean isPlaying = true;
-    
+
     public CatRoom() {
         initComponents();
     }
-    
-    public CatRoom(Cat cat, String name, String type, DefaultRoomSetting defaultRoomSetting, SimpleBackgroundFactory factory){
+
+    public CatRoom(Cat cat, String name, String type, DefaultRoomSetting defaultRoomSetting, SimpleBackgroundFactory factory) {
         this.name = name;
         this.type = type;
         this.factory = factory;
@@ -32,7 +35,7 @@ public class CatRoom extends javax.swing.JFrame {
         this.defaultRoomSetting = defaultRoomSetting;
         initComponents();
     }
-    
+
     //Facade -- to setup default cat room
     public void setup() {
         cat.setName(catNameLabel, name);
@@ -40,13 +43,17 @@ public class CatRoom extends javax.swing.JFrame {
         defaultRoomSetting.setBackground(bgLabel, toyLabel);
         defaultRoomSetting.setHealthProgressBar(HealthProgressBar);
         defaultRoomSetting.setMoodProgressBar(MoodProgressBar);
+
+        javax.swing.JLabel label = new javax.swing.JLabel();
+        label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/health_+2.png"))); // NOI18N
+        getContentPane().add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 400, -1, -1));
     }
-      
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDesktopPane1 = new javax.swing.JDesktopPane();
         HealthIncreaseIcon = new javax.swing.JLabel();
         HealthIncreaseIcon.setVisible(false);
         catNameLabel = new javax.swing.JLabel();
@@ -74,6 +81,7 @@ public class CatRoom extends javax.swing.JFrame {
         toyLabelImg = new javax.swing.JLabel();
         milkLabelImg = new javax.swing.JLabel();
         foodLabelImg = new javax.swing.JLabel();
+        food_milk = new javax.swing.JLabel();
         bgLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -188,36 +196,48 @@ public class CatRoom extends javax.swing.JFrame {
         getContentPane().add(MilkBowl, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, -1, -1));
 
         patLabelImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/catroomsimulation/resources/pat.png"))); // NOI18N
+        patLabelImg.setToolTipText("Pat me!");
         patLabelImg.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 patLabelImgMouseClicked(evt);
             }
         });
-        getContentPane().add(patLabelImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 480, -1, -1));
+        getContentPane().add(patLabelImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 420, -1, -1));
 
         toyLabelImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/catroomsimulation/resources/toy.png"))); // NOI18N
+        toyLabelImg.setToolTipText("Play with me!");
         toyLabelImg.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 toyLabelImgMouseClicked(evt);
             }
         });
-        getContentPane().add(toyLabelImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 530, -1, -1));
+        getContentPane().add(toyLabelImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 470, -1, -1));
 
         milkLabelImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/catroomsimulation/resources/milk.png"))); // NOI18N
+        milkLabelImg.setToolTipText("Give me milk");
         milkLabelImg.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 milkLabelImgMouseClicked(evt);
             }
         });
-        getContentPane().add(milkLabelImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 590, -1, -1));
+        getContentPane().add(milkLabelImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 520, -1, -1));
 
         foodLabelImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/catroomsimulation/resources/food.png"))); // NOI18N
+        foodLabelImg.setToolTipText("Give me fooodd");
         foodLabelImg.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 foodLabelImgMouseClicked(evt);
             }
         });
-        getContentPane().add(foodLabelImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 640, -1, -1));
+        getContentPane().add(foodLabelImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 570, -1, -1));
+
+        food_milk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/catroomsimulation/resources/food_milk_combo.png"))); // NOI18N
+        food_milk.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                food_milkMouseClicked(evt);
+            }
+        });
+        getContentPane().add(food_milk, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 620, -1, -1));
 
         bgLabel.setText("bgImage");
         bgLabel.setPreferredSize(new java.awt.Dimension(500, 750));
@@ -238,7 +258,7 @@ public class CatRoom extends javax.swing.JFrame {
     private void bgBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bgBoxActionPerformed
         String selectedPlace = bgBox.getSelectedItem().toString();
         bg = factory.createBackground(time);
-        bgImg = factory.getBackground(selectedPlace, bg);              
+        bgImg = factory.getBackground(selectedPlace, bg);
         bgLabel.setIcon(bgImg);
     }//GEN-LAST:event_bgBoxActionPerformed
 
@@ -250,13 +270,13 @@ public class CatRoom extends javax.swing.JFrame {
 //        player.clip.setMicrosecondPosition(0);
 //        clipTimePosition = 0;
 //        player.clip.start();
-        if(isPlaying){
-            player.loadMusic(musicBox.getSelectedItem().toString()+".wav");
+        if (isPlaying) {
+            player.loadMusic(musicBox.getSelectedItem().toString() + ".wav");
             musicButton.setIcon(new ImageIcon(getClass().getResource("resources/soundOn.png")));
-        }else{
+        } else {
             player.clip.stop();
             musicButton.setIcon(new ImageIcon(getClass().getResource("resources/soundOff.png")));
-        } 
+        }
         isPlaying = !isPlaying;
     }//GEN-LAST:event_musicButtonActionPerformed
 
@@ -265,28 +285,28 @@ public class CatRoom extends javax.swing.JFrame {
     }//GEN-LAST:event_VolumDownButtonActionPerformed
 
     private void musicBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_musicBoxActionPerformed
-        if(isPlaying){
-            player.loadMusic(musicBox.getSelectedItem().toString()+".wav");
+        if (isPlaying) {
+            player.loadMusic(musicBox.getSelectedItem().toString() + ".wav");
             musicButton.setIcon(new ImageIcon(getClass().getResource("resources/soundOn.png")));
-        }else{
+        } else {
             player.clip.stop();
             musicButton.setIcon(new ImageIcon(getClass().getResource("resources/soundOff.png")));
-        } 
+        }
         isPlaying = !isPlaying;
     }//GEN-LAST:event_musicBoxActionPerformed
 
     private void timeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timeButtonActionPerformed
-        if(time == "Night"){
+        if (time == "Night") {
             timeButton.setIcon(new ImageIcon(getClass().getResource("resources/dayMode.png")));
             time = "Day";
-        }else{
+        } else {
             timeButton.setIcon(new ImageIcon(getClass().getResource("resources/nightMode.png")));
             time = "Night";
-        } 
-                
+        }
+
         String selectedPlace = bgBox.getSelectedItem().toString();
         bg = factory.createBackground(time);
-        bgImg = factory.getBackground(selectedPlace, bg);              
+        bgImg = factory.getBackground(selectedPlace, bg);
         bgLabel.setIcon(bgImg);
     }//GEN-LAST:event_timeButtonActionPerformed
 
@@ -308,9 +328,11 @@ public class CatRoom extends javax.swing.JFrame {
 
     private void milkLabelImgMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_milkLabelImgMouseClicked
         toyLabel.setIcon(null);
-        Health health = (new Milk(new HealthProgressIncrease(HealthProgressBar)));
-        health.setHealth(2);
+        Health health = new HealthDecorator(new Milk(new HealthProgressIncrease(HealthProgressBar)));
+        health.setHealth();
         labelImageVisibility(MilkImage);
+        labelHealthIncrease("resources/health_+2.png");
+  
     }//GEN-LAST:event_milkLabelImgMouseClicked
 
     private void bgLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgLabelMouseClicked
@@ -320,28 +342,39 @@ public class CatRoom extends javax.swing.JFrame {
     private void foodLabelImgMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_foodLabelImgMouseClicked
         toyLabel.setIcon(null);
         Health health = new HealthDecorator(new Food(new HealthProgressIncrease(HealthProgressBar)));
-        health.setHealth(5);
+        health.setHealth();
+
         labelImageVisibility(FoodImage);
         labelImageUpward(HealthIncreaseIcon);
+        labelHealthIncrease("resources/health_+3.png");
     }//GEN-LAST:event_foodLabelImgMouseClicked
 
+    private void food_milkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_food_milkMouseClicked
+        toyLabel.setIcon(null);
+        Health health = new HealthDecorator(new Milk(new Food(new HealthProgressIncrease(HealthProgressBar))));
+        health.setHealth();
+
+        labelImageVisibility(FoodImage);
+        labelImageVisibility(MilkImage);
+        labelHealthIncrease("resources/health_+5.png");
+    }//GEN-LAST:event_food_milkMouseClicked
 
     public void labelImageVisibility(JLabel label) {
-        label.setVisible(true); 
-        // create a timer that will make the label invisible after 5 seconds
+        label.setVisible(true);
+        // create a timer that will make the label invisible after 3s seconds
         int delay = 3000;  // delay in milliseconds
         ActionListener taskPerformer = new ActionListener() {
-          @Override
-          public void actionPerformed(ActionEvent evt) {
-            label.setVisible(false);  // make the label invisible
-          }
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                label.setVisible(false);  // make the label invisible
+            }
         };
         new Timer(delay, taskPerformer).start();
-        labelImageUpward(HealthIncreaseIcon);
+//        labelImageUpward(HealthIncreaseIcon);
     }
-    
+
     public void labelImageUpward(JLabel label) {
-        label.setVisible(true); 
+        label.setVisible(true);
         int delay = 50;  // delay between updates in milliseconds
         int distance = 5;  // distance to move the label per update
         int duration = 1000;  // total duration of the animation in milliseconds
@@ -350,23 +383,41 @@ public class CatRoom extends javax.swing.JFrame {
 
         // create a timer that will update the position of the label at regular intervals
         ActionListener taskPerformer = new ActionListener() {
-          int i = 0;  // counter for the number of updates
-          int newY = y;
-           public void actionPerformed(ActionEvent evt) {
+            int i = 0;  // counter for the number of updates
+            int newY = y;
+
+            public void actionPerformed(ActionEvent evt) {
                 // update the y position of the label
-                
+
                 newY = newY - distance;
                 label.setLocation(label.getX(), newY);  // set the new location of the label
                 i++;  // increment the counter
                 if (i >= steps) {  // if the desired number of updates has been reached
-                  label.setVisible(false);  // make the label invisible
-                  ((Timer)evt.getSource()).stop();  // stop the timer
+                    label.setVisible(false);  // make the label invisible
+                    ((Timer) evt.getSource()).stop();  // stop the timer
                 }
-              }
+            }
         };
         new Timer(delay, taskPerformer).start();
     }
-    
+
+    public void labelHealthIncrease(String image) {
+        HealthIncreaseIcon.setVisible(true);
+        HealthIncreaseIcon.setIcon(new ImageIcon(getClass().getResource(image)));
+        
+        // create a timer that will make the label invisible after 3s seconds
+        int delay = 3000;  // delay in milliseconds
+        ActionListener taskPerformer = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                 HealthIncreaseIcon.setVisible(false);  // make the label invisible
+            }
+        };
+        new Timer(delay, taskPerformer).start();
+        
+        labelImageUpward(HealthIncreaseIcon);
+    }
+
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -393,7 +444,7 @@ public class CatRoom extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {    
+            public void run() {
                 new CatRoom().setVisible(true);
             }
         });
@@ -417,6 +468,8 @@ public class CatRoom extends javax.swing.JFrame {
     public javax.swing.JLabel catNameLabel;
     private javax.swing.JButton exitButton;
     public javax.swing.JLabel foodLabelImg;
+    public javax.swing.JLabel food_milk;
+    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     public javax.swing.JLabel milkLabelImg;
     private javax.swing.JComboBox<String> musicBox;

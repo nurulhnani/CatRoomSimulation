@@ -16,7 +16,7 @@ public class DefaultRoomSetting {
     
     public void setHealthProgressBar(JProgressBar HealthProgressBar){
         Health health = new HealthProgressDecrease(HealthProgressBar);
-        health.setHealth(1);     
+        health.setHealth();     
     }
     
     public void setMoodProgressBar(JProgressBar MoodProgressBar){

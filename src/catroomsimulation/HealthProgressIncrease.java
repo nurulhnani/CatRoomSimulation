@@ -3,16 +3,19 @@ package catroomsimulation;
 import javax.swing.JProgressBar;
 
 public class HealthProgressIncrease extends Health{
-
-    public HealthProgressIncrease(JProgressBar pb) {
-        this.pb = pb;
+    
+    public HealthProgressIncrease(JProgressBar jpb) {
+        pb = jpb;
     }
     
     @Override
-    public JProgressBar setHealth(int val) {
-        pb.setValue(pb.getValue() + val);
+    public JProgressBar setHealth() {
+        pb.setValue(pb.getValue() + addHealthValue());
         return this.pb;
     }
     
-    
+    @Override
+    public int addHealthValue() {
+        return 1;
+    }
 }

@@ -15,8 +15,14 @@ public class HealthDecorator extends Health{
     }
     
     @Override
-    public JProgressBar setHealth(int val){
-        return health.setHealth(val);
+    public JProgressBar setHealth(){
+        addHealthValue();
+        return health.setHealth();
+    }
+    
+    @Override
+    public int addHealthValue() {
+        return health.addHealthValue();
     }
     
 }

@@ -9,7 +9,12 @@ public class Milk extends HealthDecorator{
     }
     
     @Override
-    public JProgressBar setHealth(int val) {
-        return health.setHealth(val);
+    public JProgressBar setHealth() {
+        return health.setHealth();
+    }
+    
+    @Override
+    public int addHealthValue(){
+        return health.addHealthValue() + 5;
     }
 }

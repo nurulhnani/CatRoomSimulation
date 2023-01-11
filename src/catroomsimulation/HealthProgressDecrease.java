@@ -9,10 +9,15 @@ public class HealthProgressDecrease extends Health{
     }
         
     @Override
-    public JProgressBar setHealth(int val) {
-        HealthDecreaser dec = new HealthDecreaser(pb, val);
+    public JProgressBar setHealth() {
+        HealthDecreaser dec = new HealthDecreaser(pb, addHealthValue());
         dec.execute();
         return this.pb;
+    }
+    
+    @Override
+    public int addHealthValue(){
+        return 1;
     }
     
 }

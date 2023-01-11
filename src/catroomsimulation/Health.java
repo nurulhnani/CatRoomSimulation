@@ -7,7 +7,8 @@ public abstract class Health {
 
     JProgressBar pb;
     
-    public abstract JProgressBar setHealth(int val);
+    public abstract JProgressBar setHealth();
     
+    public abstract int addHealthValue();
     
 }
