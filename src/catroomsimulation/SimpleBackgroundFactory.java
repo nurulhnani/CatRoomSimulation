@@ -7,43 +7,66 @@ import javax.swing.ImageIcon;
 
 public class SimpleBackgroundFactory {
     
-    public Background createBackground(String selectedTime){
-        Background bg = null;
-        
-        switch(selectedTime) {
-          case "Day":
-              bg = new DayBackground();
-              break;
-          case "Night":
-              bg = new NightBackground();
-              break;
-          default:
-            break;
-        }  
-    return bg;        
+    State lightsOnState;
+    State lightsOffState;
+    
+    State state;
+    
+    public SimpleBackgroundFactory() {
+        lightsOnState = new LightsOnState(this);
+        lightsOffState = new LightsOffState(this);
+        state = lightsOnState;
     }
     
-    public ImageIcon getBackground(String selectedPlace, Background bg){
+    public void clickButton() {
+        state.clickButton();
+    }
+    
+    public String getFolder() {
+        return state.getFolder();
+    }
+    
+    public ImageIcon getIcon() {
+        return state.getIcon();
+    }
+    
+    public void setState(State state){
+        this.state = state;
+    }
+    
+    public State getState() {
+        return state;
+    }
+    
+    public State getLightsOnState() {
+        return lightsOnState;
+    }
+    
+    public State getLightsOffState() {
+        return lightsOffState;
+    }
+    
+    public ImageIcon getBackground(String selectedPlace){
         ImageIcon bgImg = null;
-        
+                
         switch(selectedPlace) {
           case "Cat Room":
-                bgImg = bg.CatRoom();
+                bgImg = new ImageIcon(getClass().getResource("resources/" + getFolder() +"/catroom.jpg"));
               break;
             case "Bed Room":
-                bgImg = bg.BedRoom();
+                bgImg = new ImageIcon(getClass().getResource("resources/" + getFolder() +"/bedroom.jpg"));
               break;
             case "Park":
-                bgImg = bg.Park();
+                bgImg = new ImageIcon(getClass().getResource("resources/" + getFolder() +"/park.jpg"));
               break;
             case "Living Room":
-                bgImg = bg.LivingRoom();
+                bgImg = new ImageIcon(getClass().getResource("resources/" + getFolder() +"/livingroom.jpg"));
               break;
             case "Play Room":
-                bgImg = bg.PlayRoom();
+                bgImg = new ImageIcon(getClass().getResource("resources/" + getFolder() +"/playroom.jpg"));
               break;
             default:
-                bgImg = bg.CatRoom();
+                bgImg = new ImageIcon(getClass().getResource("resources/" + getFolder() +"/catroom.jpg"));
                 break;        }  
     return bgImg;        
     }    

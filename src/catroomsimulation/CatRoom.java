@@ -11,7 +11,6 @@ public class CatRoom extends javax.swing.JFrame {
 
     private String name;
     private String type;
-    private String time = "Day";
     Cat cat;
     DefaultRoomSetting defaultRoomSetting;
     SimpleBackgroundFactory factory;
@@ -182,7 +181,7 @@ public class CatRoom extends javax.swing.JFrame {
         getContentPane().add(MoodPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, 210, 40));
         MoodPanel.getAccessibleContext().setAccessibleName("");
 
-        timeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/catroomsimulation/resources/dayMode.png"))); // NOI18N
+        timeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/catroomsimulation/resources/lightsOn.png"))); // NOI18N
         timeButton.setBorder(null);
         timeButton.setMaximumSize(new java.awt.Dimension(50, 50));
         timeButton.setMinimumSize(new java.awt.Dimension(50, 50));
@@ -257,8 +256,7 @@ public class CatRoom extends javax.swing.JFrame {
 
     private void bgBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bgBoxActionPerformed
         String selectedPlace = bgBox.getSelectedItem().toString();
-        bg = factory.createBackground(time);
-        bgImg = factory.getBackground(selectedPlace, bg);
+        bgImg = factory.getBackground(selectedPlace);
         bgLabel.setIcon(bgImg);
     }//GEN-LAST:event_bgBoxActionPerformed
 
@@ -296,18 +294,9 @@ public class CatRoom extends javax.swing.JFrame {
     }//GEN-LAST:event_musicBoxActionPerformed
 
     private void timeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timeButtonActionPerformed
-        if (time == "Night") {
-            timeButton.setIcon(new ImageIcon(getClass().getResource("resources/dayMode.png")));
-            time = "Day";
-        } else {
-            timeButton.setIcon(new ImageIcon(getClass().getResource("resources/nightMode.png")));
-            time = "Night";
-        }
-
-        String selectedPlace = bgBox.getSelectedItem().toString();
-        bg = factory.createBackground(time);
-        bgImg = factory.getBackground(selectedPlace, bg);
-        bgLabel.setIcon(bgImg);
+        factory.clickButton();
+        bgBoxActionPerformed(evt);
+        timeButton.setIcon(factory.getIcon());
     }//GEN-LAST:event_timeButtonActionPerformed
 
     private void patLabelImgMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_patLabelImgMouseClicked

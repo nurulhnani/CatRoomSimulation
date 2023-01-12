@@ -11,7 +11,7 @@ public class DefaultRoomSetting {
     public void setBackground(JLabel bgLabel, JLabel toyLabel){
         bgLabel.setText("");
         toyLabel.setText("");
-        bgLabel.setIcon(new ImageIcon(getClass().getResource("resources/catroom.jpg")));
+        bgLabel.setIcon(new ImageIcon(getClass().getResource("resources/LightsOnBackground/catroom.jpg")));
     }
     
     public void setHealthProgressBar(JProgressBar HealthProgressBar){
