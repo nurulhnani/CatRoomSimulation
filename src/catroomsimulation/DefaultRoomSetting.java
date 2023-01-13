@@ -8,9 +8,9 @@ public class DefaultRoomSetting {
     public DefaultRoomSetting() {
     }
 
-    public void setBackground(JLabel bgLabel, JLabel toyLabel){
+    public void setBackground(JLabel bgLabel){
         bgLabel.setText("");
-        toyLabel.setText("");
+//        toyLabel.setText("");
         bgLabel.setIcon(new ImageIcon(getClass().getResource("resources/LightsOnBackground/catroom.jpg")));
     }
     

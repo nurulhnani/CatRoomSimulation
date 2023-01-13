@@ -10,10 +10,10 @@ public class PatMood extends MoodDecorator {
         super(mood);
     }  
 
-    
     @Override
-    public JProgressBar setMood(int val) {
-        return mood.setMood(val);
+    public JProgressBar setMood() {
+        mood.setVal(5);
+        return mood.setMood();
     }
 
 }

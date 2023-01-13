@@ -39,7 +39,7 @@ public class CatRoom extends javax.swing.JFrame {
     public void setup() {
         cat.setName(catNameLabel, name);
         cat.setType(catLabel, type);
-        defaultRoomSetting.setBackground(bgLabel, toyLabel);
+        defaultRoomSetting.setBackground(bgLabel);
         defaultRoomSetting.setHealthProgressBar(HealthProgressBar);
         defaultRoomSetting.setMoodProgressBar(MoodProgressBar);
 
@@ -55,15 +55,20 @@ public class CatRoom extends javax.swing.JFrame {
         jDesktopPane1 = new javax.swing.JDesktopPane();
         HealthIncreaseIcon = new javax.swing.JLabel();
         HealthIncreaseIcon.setVisible(false);
+        MoodIncreaseIcon = new javax.swing.JLabel();
+        MoodIncreaseIcon.setVisible(false);
         catNameLabel = new javax.swing.JLabel();
-        toyLabel = new javax.swing.JLabel();
         exitButton = new javax.swing.JButton();
         bgBox = new javax.swing.JComboBox<>();
         VolumDownButton = new javax.swing.JButton();
+        PatImage = new javax.swing.JLabel();
+        PatImage.setVisible(false);
         FoodImage = new javax.swing.JLabel();
         FoodImage.setVisible(false);
         MilkImage = new javax.swing.JLabel();
         MilkImage.setVisible(false);
+        ToyImage = new javax.swing.JLabel();
+        ToyImage.setVisible(false);
         catLabel = new javax.swing.JLabel();
         VolumUpButton = new javax.swing.JButton();
         musicButton = new javax.swing.JButton();
@@ -81,6 +86,8 @@ public class CatRoom extends javax.swing.JFrame {
         milkLabelImg = new javax.swing.JLabel();
         foodLabelImg = new javax.swing.JLabel();
         food_milk = new javax.swing.JLabel();
+        comboMood = new javax.swing.JLabel();
+        patcombo = new javax.swing.JLabel();
         bgLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -88,16 +95,16 @@ public class CatRoom extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         HealthIncreaseIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/catroomsimulation/resources/health_icon.png"))); // NOI18N
-        getContentPane().add(HealthIncreaseIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 390, -1, -1));
+        getContentPane().add(HealthIncreaseIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 340, -1, -1));
+
+        MoodIncreaseIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/catroomsimulation/resources/heart.png"))); // NOI18N
+        getContentPane().add(MoodIncreaseIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 390, -1, -1));
 
         catNameLabel.setBackground(new java.awt.Color(229, 229, 229));
         catNameLabel.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         catNameLabel.setText("Cat Name");
         catNameLabel.setOpaque(true);
         getContentPane().add(catNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
-
-        toyLabel.setText("toyImage");
-        getContentPane().add(toyLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 510, 150, 110));
 
         exitButton.setText("Exit");
         exitButton.addActionListener(new java.awt.event.ActionListener() {
@@ -123,14 +130,20 @@ public class CatRoom extends javax.swing.JFrame {
         });
         getContentPane().add(VolumDownButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 690, 40, 30));
 
+        PatImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/catroomsimulation/resources/pat.png"))); // NOI18N
+        getContentPane().add(PatImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, 210, -1));
+
         FoodImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/catroomsimulation/resources/food_bowl.png"))); // NOI18N
-        getContentPane().add(FoodImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 300, 210, -1));
+        getContentPane().add(FoodImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, 210, -1));
 
         MilkImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/catroomsimulation/resources/milk_bowl.png"))); // NOI18N
-        getContentPane().add(MilkImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 290, 180, -1));
+        getContentPane().add(MilkImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 330, 180, -1));
+
+        ToyImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/catroomsimulation/resources/yarn.png"))); // NOI18N
+        getContentPane().add(ToyImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 500, 210, 150));
 
         catLabel.setText("catImage");
-        getContentPane().add(catLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, 320, 340));
+        getContentPane().add(catLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 320, 340));
 
         VolumUpButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/catroomsimulation/resources/volumeUp.png"))); // NOI18N
         VolumUpButton.addActionListener(new java.awt.event.ActionListener() {
@@ -194,14 +207,14 @@ public class CatRoom extends javax.swing.JFrame {
         getContentPane().add(timeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 680, -1, -1));
         getContentPane().add(MilkBowl, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, -1, -1));
 
-        patLabelImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/catroomsimulation/resources/pat.png"))); // NOI18N
+        patLabelImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/catroomsimulation/resources/patcat.png"))); // NOI18N
         patLabelImg.setToolTipText("Pat me!");
         patLabelImg.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 patLabelImgMouseClicked(evt);
             }
         });
-        getContentPane().add(patLabelImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 420, -1, -1));
+        getContentPane().add(patLabelImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 390, -1, -1));
 
         toyLabelImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/catroomsimulation/resources/toy.png"))); // NOI18N
         toyLabelImg.setToolTipText("Play with me!");
@@ -210,7 +223,7 @@ public class CatRoom extends javax.swing.JFrame {
                 toyLabelImgMouseClicked(evt);
             }
         });
-        getContentPane().add(toyLabelImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 470, -1, -1));
+        getContentPane().add(toyLabelImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 430, -1, -1));
 
         milkLabelImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/catroomsimulation/resources/milk.png"))); // NOI18N
         milkLabelImg.setToolTipText("Give me milk");
@@ -238,6 +251,18 @@ public class CatRoom extends javax.swing.JFrame {
         });
         getContentPane().add(food_milk, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 620, -1, -1));
 
+        comboMood.setIcon(new javax.swing.ImageIcon(getClass().getResource("/catroomsimulation/resources/toy.png"))); // NOI18N
+        comboMood.setToolTipText("Play and Pat me!");
+        comboMood.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                comboMoodMouseClicked(evt);
+            }
+        });
+        getContentPane().add(comboMood, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 480, -1, -1));
+
+        patcombo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/catroomsimulation/resources/patcat.png"))); // NOI18N
+        getContentPane().add(patcombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 470, 30, 30));
+
         bgLabel.setText("bgImage");
         bgLabel.setPreferredSize(new java.awt.Dimension(500, 750));
         bgLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -245,7 +270,7 @@ public class CatRoom extends javax.swing.JFrame {
                 bgLabelMouseClicked(evt);
             }
         });
-        getContentPane().add(bgLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 750));
+        getContentPane().add(bgLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 500, 750));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -300,23 +325,27 @@ public class CatRoom extends javax.swing.JFrame {
     }//GEN-LAST:event_timeButtonActionPerformed
 
     private void patLabelImgMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_patLabelImgMouseClicked
-        toyLabel.setIcon(null);
-        int val = 2;
         MoodDecorator mooddecorator = new MoodDecorator(new PatMood(new MoodProgress(MoodProgressBar)));
-        mooddecorator.setMood(val);
-        System.out.println("Play clicked - increase Mood by 2 pts");
+        mooddecorator.setMood();
+        labelImageVisibility(PatImage);
+        labelImageUpward(MoodIncreaseIcon);
+        labelHealthIncrease("resources/mood_+2.png");
+//        System.out.println("Play clicked - increase Mood by 2 pts");
     }//GEN-LAST:event_patLabelImgMouseClicked
 
     private void toyLabelImgMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_toyLabelImgMouseClicked
-        int val = 3;
+        
         MoodDecorator mooddecorator = new MoodDecorator(new PlayMood(new MoodProgress(MoodProgressBar)));
-        mooddecorator.setMood(val);
+        mooddecorator.setMood();
         System.out.println("Play clicked - increase Mood by 3 pts");
-        toyLabel.setIcon(new ImageIcon(getClass().getResource("resources/mouse.gif")));
+        labelImageVisibility(ToyImage);
+        labelImageUpward(MoodIncreaseIcon);
+        labelHealthIncrease("resources/mood_+3.png");
+//        toyLabel.setIcon(new ImageIcon(getClass().getResource("resources/mouse.gif")));
     }//GEN-LAST:event_toyLabelImgMouseClicked
 
     private void milkLabelImgMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_milkLabelImgMouseClicked
-        toyLabel.setIcon(null);
+//        toyLabel.setIcon(null);
         Health health = new HealthDecorator(new Milk(new HealthProgressIncrease(HealthProgressBar)));
         health.setHealth();
         labelImageVisibility(MilkImage);
@@ -329,7 +358,7 @@ public class CatRoom extends javax.swing.JFrame {
     }//GEN-LAST:event_bgLabelMouseClicked
 
     private void foodLabelImgMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_foodLabelImgMouseClicked
-        toyLabel.setIcon(null);
+//        toyLabel.setIcon(null);
         Health health = new HealthDecorator(new Food(new HealthProgressIncrease(HealthProgressBar)));
         health.setHealth();
 
@@ -339,7 +368,7 @@ public class CatRoom extends javax.swing.JFrame {
     }//GEN-LAST:event_foodLabelImgMouseClicked
 
     private void food_milkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_food_milkMouseClicked
-        toyLabel.setIcon(null);
+//        toyLabel.setIcon(null);
         Health health = new HealthDecorator(new Milk(new Food(new HealthProgressIncrease(HealthProgressBar))));
         health.setHealth();
 
@@ -347,6 +376,15 @@ public class CatRoom extends javax.swing.JFrame {
         labelImageVisibility(MilkImage);
         labelHealthIncrease("resources/health_+5.png");
     }//GEN-LAST:event_food_milkMouseClicked
+
+    private void comboMoodMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comboMoodMouseClicked
+        MoodDecorator mooddecorator = new MoodDecorator(new PlayMood(new PatMood(new MoodProgress(MoodProgressBar))));
+        mooddecorator.setMood();
+        labelImageVisibility(ToyImage);
+        labelImageVisibility(PatImage);
+        labelImageUpward(MoodIncreaseIcon);
+        labelHealthIncrease("resources/mood_+5.png");
+    }//GEN-LAST:event_comboMoodMouseClicked
 
     public void labelImageVisibility(JLabel label) {
         label.setVisible(true);
@@ -447,14 +485,18 @@ public class CatRoom extends javax.swing.JFrame {
     public javax.swing.JProgressBar HealthProgressBar;
     public javax.swing.JLabel MilkBowl;
     public javax.swing.JLabel MilkImage;
+    public javax.swing.JLabel MoodIncreaseIcon;
     public javax.swing.JPanel MoodPanel;
     public javax.swing.JProgressBar MoodProgressBar;
+    public javax.swing.JLabel PatImage;
+    public javax.swing.JLabel ToyImage;
     private javax.swing.JButton VolumDownButton;
     private javax.swing.JButton VolumUpButton;
     private javax.swing.JComboBox<String> bgBox;
     private javax.swing.JLabel bgLabel;
     public javax.swing.JLabel catLabel;
     public javax.swing.JLabel catNameLabel;
+    public javax.swing.JLabel comboMood;
     private javax.swing.JButton exitButton;
     public javax.swing.JLabel foodLabelImg;
     public javax.swing.JLabel food_milk;
@@ -464,8 +506,8 @@ public class CatRoom extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> musicBox;
     private javax.swing.JButton musicButton;
     public javax.swing.JLabel patLabelImg;
+    public javax.swing.JLabel patcombo;
     private javax.swing.JButton timeButton;
-    public javax.swing.JLabel toyLabel;
     public javax.swing.JLabel toyLabelImg;
     // End of variables declaration//GEN-END:variables
 

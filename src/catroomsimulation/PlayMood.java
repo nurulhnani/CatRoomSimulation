@@ -8,10 +8,11 @@ public class PlayMood extends MoodDecorator {
         super(mood);
     }  
 
-    
     @Override
-    public JProgressBar setMood(int val) {
-        return mood.setMood(val);
+    public JProgressBar setMood() {
+        mood.setVal(2);
+        return mood.setMood();
     }
-
+    
+    
 }
