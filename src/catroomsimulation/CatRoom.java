@@ -256,7 +256,7 @@ public class CatRoom extends javax.swing.JFrame {
 
     private void bgBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bgBoxActionPerformed
         String selectedPlace = bgBox.getSelectedItem().toString();
-        bgImg = factory.getBackground(selectedPlace);
+        bgImg = factory.createBackground(selectedPlace);
         bgLabel.setIcon(bgImg);
     }//GEN-LAST:event_bgBoxActionPerformed
 

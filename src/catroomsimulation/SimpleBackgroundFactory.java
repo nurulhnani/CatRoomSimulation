@@ -46,7 +46,7 @@ public class SimpleBackgroundFactory {
         return lightsOffState;
     }
     
-    public ImageIcon getBackground(String selectedPlace){
+    public ImageIcon createBackground(String selectedPlace){
         ImageIcon bgImg = null;
                 
         switch(selectedPlace) {
