@@ -13,9 +13,9 @@ import javax.swing.ImageIcon;
  */
 public class LightsOnState implements State{
     
-    SimpleBackgroundFactory background;
+    Background background;
     
-    public LightsOnState(SimpleBackgroundFactory background) {
+    public LightsOnState(Background background) {
        this.background = background;
     }
 

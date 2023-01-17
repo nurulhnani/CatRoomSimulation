@@ -14,8 +14,9 @@ public class CatRoom extends javax.swing.JFrame {
     Cat cat;
     DefaultRoomSetting defaultRoomSetting;
     SimpleBackgroundFactory factory;
-    ImageIcon bgImg;
-    Background bg;
+    Background background;
+//    ImageIcon bgImg;
+//    Background bg;
 
     // Singleton method -- Setup background music
     musicPlayerSingleton player = musicPlayerSingleton.getInstance();
@@ -256,8 +257,8 @@ public class CatRoom extends javax.swing.JFrame {
 
     private void bgBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bgBoxActionPerformed
         String selectedPlace = bgBox.getSelectedItem().toString();
-        bgImg = factory.createBackground(selectedPlace);
-        bgLabel.setIcon(bgImg);
+        background = factory.createBackground(selectedPlace);
+        bgLabel.setIcon(background.getBackground());
     }//GEN-LAST:event_bgBoxActionPerformed
 
     private void VolumUpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolumUpButtonActionPerformed
@@ -294,9 +295,10 @@ public class CatRoom extends javax.swing.JFrame {
     }//GEN-LAST:event_musicBoxActionPerformed
 
     private void timeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timeButtonActionPerformed
-        factory.clickButton();
+//        factory.clickButton();
+        background.clickButton();
         bgBoxActionPerformed(evt);
-        timeButton.setIcon(factory.getIcon());
+        timeButton.setIcon(background.getIcon());
     }//GEN-LAST:event_timeButtonActionPerformed
 
     private void patLabelImgMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_patLabelImgMouseClicked
