@@ -2,15 +2,15 @@ package catroomsimulation;
 
 import javax.swing.JProgressBar;
 
-public class HealthProgressDecrease extends Health{
+public class HealthProgress extends Health{
 
-    public HealthProgressDecrease(JProgressBar pb) {
+    public HealthProgress(JProgressBar pb) {
         this.pb = pb;
     }
         
     @Override
     public JProgressBar setHealth() {
-        HealthDecreaser dec = new HealthDecreaser(pb, addHealthValue());
+        SwingWork dec = new SwingWork(pb, addHealthValue());
         dec.execute();
         return this.pb;
     }

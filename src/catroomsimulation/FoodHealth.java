@@ -3,9 +3,9 @@ package catroomsimulation;
 import javax.swing.JProgressBar;
 
 
-public class Food extends HealthDecorator{
+public class FoodHealth extends HealthDecorator{
     
-    Food(Health health) {
+    FoodHealth(Health health) {
         super(health);
     }
     

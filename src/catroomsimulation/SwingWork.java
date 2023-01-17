@@ -3,12 +3,12 @@ package catroomsimulation;
 import javax.swing.JProgressBar;
 import javax.swing.SwingWorker;
 
-public class HealthDecreaser extends SwingWorker<Void, Void> {
+public class SwingWork extends SwingWorker<Void, Void> {
 
     private JProgressBar pb;
     int reductionVal = 0;
 
-    public HealthDecreaser(JProgressBar HealthProgressBar, int val) {
+    public SwingWork(JProgressBar HealthProgressBar, int val) {
         this.pb = HealthProgressBar;
         this.reductionVal = val;
     }

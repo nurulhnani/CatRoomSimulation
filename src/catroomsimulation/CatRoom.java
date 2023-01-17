@@ -348,7 +348,7 @@ public class CatRoom extends javax.swing.JFrame {
 
     private void milkLabelImgMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_milkLabelImgMouseClicked
 //        toyLabel.setIcon(null);
-        Health health = new HealthDecorator(new Milk(new HealthProgressIncrease(HealthProgressBar)));
+        Health health = new HealthDecorator(new MilkHealth(new HealthProgressBar(HealthProgressBar)));
         health.setHealth();
         labelImageVisibility(MilkImage);
         labelHealthIncrease("resources/health_+2.png");
@@ -361,7 +361,7 @@ public class CatRoom extends javax.swing.JFrame {
 
     private void foodLabelImgMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_foodLabelImgMouseClicked
 //        toyLabel.setIcon(null);
-        Health health = new HealthDecorator(new Food(new HealthProgressIncrease(HealthProgressBar)));
+        Health health = new HealthDecorator(new FoodHealth(new HealthProgressBar(HealthProgressBar)));
         health.setHealth();
 
         labelImageVisibility(FoodImage);
@@ -371,7 +371,7 @@ public class CatRoom extends javax.swing.JFrame {
 
     private void food_milkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_food_milkMouseClicked
 //        toyLabel.setIcon(null);
-        Health health = new HealthDecorator(new Milk(new Food(new HealthProgressIncrease(HealthProgressBar))));
+        Health health = new HealthDecorator(new MilkHealth(new FoodHealth(new HealthProgressBar(HealthProgressBar))));
         health.setHealth();
 
         labelImageVisibility(FoodImage);
