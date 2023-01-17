@@ -13,13 +13,12 @@ import javax.swing.ImageIcon;
  */
 public class LightsOffState implements State {
     
-    SimpleBackgroundFactory background;
+    Background background;
     
-    public LightsOffState(SimpleBackgroundFactory background) {
+    public LightsOffState(Background background) {
         this.background = background;
 
     }
-
 
     @Override
     public void clickButton() {

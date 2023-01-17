@@ -1,20 +1,48 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package catroomsimulation;
 
 import javax.swing.ImageIcon;
 
-/**
- *
- * @author ndhsn
- */
-public interface Background {
-    public ImageIcon CatRoom();
-    public ImageIcon BedRoom();
-    public ImageIcon Park();
-    public ImageIcon LivingRoom();
-    public ImageIcon PlayRoom();
+public abstract class Background {
+    State lightsOnState;
+    State lightsOffState;
+    
+    State state;
+    
+    public Background() {
+        lightsOnState = new LightsOnState(this);
+        lightsOffState = new LightsOffState(this);
+        state = lightsOnState;
+    }
+    
+    abstract ImageIcon getBackground();
+    
+    public void clickButton() {
+        state.clickButton();
+    }
+    
+    public String getFolder() {
+        return state.getFolder();
+    }
+    
+    public ImageIcon getIcon() {
+        return state.getIcon();
+    }
+    
+    public void setState(State state){
+        this.state = state;
+    }
+    
+    public State getState() {
+        return state;
+    }
+    
+    public State getLightsOnState() {
+        return lightsOnState;
+    }
+    
+    public State getLightsOffState() {
+        return lightsOffState;
+    }
+    
 }
