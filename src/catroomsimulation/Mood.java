@@ -5,7 +5,6 @@ import javax.swing.JProgressBar;
 public abstract class Mood {
     JProgressBar MoodProgressBar;
     int valMood = -1;
-    String str = "";
     
     public abstract JProgressBar setMood();
     
@@ -17,12 +16,6 @@ public abstract class Mood {
         this.valMood += val;
     }
     
-    public int getVal(){
-        return this.valMood;
-    }
     
-    public void setStr(String val){
-        this.str += val;
-    }
 
 }

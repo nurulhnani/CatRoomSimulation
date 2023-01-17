@@ -3,7 +3,7 @@ import javax.swing.JProgressBar;
 
 
 public class MoodProgress extends Mood {
-    int val;
+   
     public MoodProgress(JProgressBar MoodProgressBar) {
         this.MoodProgressBar = MoodProgressBar;        
     }
