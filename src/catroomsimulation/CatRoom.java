@@ -44,10 +44,8 @@ public class CatRoom extends javax.swing.JFrame {
         defaultRoomSetting.setBackground(bgLabel);
         defaultRoomSetting.setHealthProgressBar(HealthProgressBar);
         defaultRoomSetting.setMoodProgressBar(MoodProgressBar);
-
-        javax.swing.JLabel label = new javax.swing.JLabel();
-        label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/health_+2.png"))); // NOI18N
-        getContentPane().add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 400, -1, -1));
+        
+        health = new HealthProgressBar(HealthProgressBar);
     }
 
     @SuppressWarnings("unchecked")
@@ -348,8 +346,7 @@ public class CatRoom extends javax.swing.JFrame {
     }//GEN-LAST:event_toyLabelImgMouseClicked
 
     private void milkLabelImgMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_milkLabelImgMouseClicked
-//        toyLabel.setIcon(null);
-        health = new HealthDecorator(new MilkHealth(new HealthProgressBar(HealthProgressBar)));
+        health = new HealthDecorator(new MilkHealth(health));
         health.setHealth();
         labelImageVisibility(MilkImage);
         labelHealthIncrease("resources/health_+2.png");
@@ -361,8 +358,7 @@ public class CatRoom extends javax.swing.JFrame {
     }//GEN-LAST:event_bgLabelMouseClicked
 
     private void foodLabelImgMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_foodLabelImgMouseClicked
-//        toyLabel.setIcon(null);
-        health = new HealthDecorator(new FoodHealth(new HealthProgressBar(HealthProgressBar)));
+        health = new HealthDecorator(new FoodHealth(health));
         health.setHealth();
 
         labelImageVisibility(FoodImage);
@@ -371,8 +367,7 @@ public class CatRoom extends javax.swing.JFrame {
     }//GEN-LAST:event_foodLabelImgMouseClicked
 
     private void food_milkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_food_milkMouseClicked
-//        toyLabel.setIcon(null);
-        health = new HealthDecorator(new MilkHealth(new FoodHealth(new HealthProgressBar(HealthProgressBar))));
+        health = new HealthDecorator(new MilkHealth(new FoodHealth(health)));
         health.setHealth();
 
         labelImageVisibility(FoodImage);
