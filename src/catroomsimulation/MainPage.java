@@ -112,9 +112,11 @@ public class MainPage extends javax.swing.JFrame {
         
         //Simple Factory
         SimpleBackgroundFactory factory = new SimpleBackgroundFactory();
+        
+        Background background = new BackgroundCatRoom();
 
         
-        CatRoom catRoom = new CatRoom(cat, name, type, defaultRoomSetting, factory);
+        CatRoom catRoom = new CatRoom(cat, name, type, defaultRoomSetting, factory, background);
         this.setVisible(false);
         catRoom.setVisible(true);
         catRoom.setup();

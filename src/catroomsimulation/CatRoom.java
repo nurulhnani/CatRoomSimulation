@@ -26,12 +26,13 @@ public class CatRoom extends javax.swing.JFrame {
         initComponents();
     }
 
-    public CatRoom(Cat cat, String name, String type, DefaultRoomSetting defaultRoomSetting, SimpleBackgroundFactory factory) {
+    public CatRoom(Cat cat, String name, String type, DefaultRoomSetting defaultRoomSetting, SimpleBackgroundFactory factory, Background background) {
         this.name = name;
         this.type = type;
         this.factory = factory;
         this.cat = cat;
         this.defaultRoomSetting = defaultRoomSetting;
+        this.background = background;
         initComponents();
     }
 
@@ -280,6 +281,7 @@ public class CatRoom extends javax.swing.JFrame {
     private void bgBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bgBoxActionPerformed
         String selectedPlace = bgBox.getSelectedItem().toString();
         background = factory.createBackground(selectedPlace);
+        timeButton.setIcon(background.getIcon());
         bgLabel.setIcon(background.getBackground());
     }//GEN-LAST:event_bgBoxActionPerformed
 
@@ -317,10 +319,10 @@ public class CatRoom extends javax.swing.JFrame {
     }//GEN-LAST:event_musicBoxActionPerformed
 
     private void timeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timeButtonActionPerformed
-//        factory.clickButton();
         background.clickButton();
-        bgBoxActionPerformed(evt);
+//        bgBoxActionPerformed(evt);
         timeButton.setIcon(background.getIcon());
+        bgLabel.setIcon(background.getBackground());
     }//GEN-LAST:event_timeButtonActionPerformed
 
     private void patLabelImgMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_patLabelImgMouseClicked
