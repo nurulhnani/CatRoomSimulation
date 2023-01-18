@@ -16,8 +16,6 @@ public class CatRoom extends javax.swing.JFrame {
     SimpleBackgroundFactory factory;
     Background background;
     Health health;
-//    ImageIcon bgImg;
-//    Background bg;
 
     // Singleton method -- Setup background music
     musicPlayerSingleton player = musicPlayerSingleton.getInstance();
@@ -83,9 +81,9 @@ public class CatRoom extends javax.swing.JFrame {
         MilkBowl = new javax.swing.JLabel();
         patLabelImg = new javax.swing.JLabel();
         toyLabelImg = new javax.swing.JLabel();
-        milkLabelImg = new javax.swing.JLabel();
-        foodLabelImg = new javax.swing.JLabel();
-        food_milk = new javax.swing.JLabel();
+        milk = new javax.swing.JLabel();
+        food = new javax.swing.JLabel();
+        foodMilk = new javax.swing.JLabel();
         comboMood = new javax.swing.JLabel();
         patcombo = new javax.swing.JLabel();
         bgLabel = new javax.swing.JLabel();
@@ -225,31 +223,31 @@ public class CatRoom extends javax.swing.JFrame {
         });
         getContentPane().add(toyLabelImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 430, -1, -1));
 
-        milkLabelImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/catroomsimulation/resources/milk.png"))); // NOI18N
-        milkLabelImg.setToolTipText("Give me milk");
-        milkLabelImg.addMouseListener(new java.awt.event.MouseAdapter() {
+        milk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/catroomsimulation/resources/milk.png"))); // NOI18N
+        milk.setToolTipText("Give me milk");
+        milk.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                milkLabelImgMouseClicked(evt);
+                milkMouseClicked(evt);
             }
         });
-        getContentPane().add(milkLabelImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 520, -1, -1));
+        getContentPane().add(milk, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 520, -1, -1));
 
-        foodLabelImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/catroomsimulation/resources/food.png"))); // NOI18N
-        foodLabelImg.setToolTipText("Give me fooodd");
-        foodLabelImg.addMouseListener(new java.awt.event.MouseAdapter() {
+        food.setIcon(new javax.swing.ImageIcon(getClass().getResource("/catroomsimulation/resources/food.png"))); // NOI18N
+        food.setToolTipText("Give me fooodd");
+        food.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                foodLabelImgMouseClicked(evt);
+                foodMouseClicked(evt);
             }
         });
-        getContentPane().add(foodLabelImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 570, -1, -1));
+        getContentPane().add(food, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 570, -1, -1));
 
-        food_milk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/catroomsimulation/resources/food_milk_combo.png"))); // NOI18N
-        food_milk.addMouseListener(new java.awt.event.MouseAdapter() {
+        foodMilk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/catroomsimulation/resources/food_milk_combo.png"))); // NOI18N
+        foodMilk.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                food_milkMouseClicked(evt);
+                foodMilkMouseClicked(evt);
             }
         });
-        getContentPane().add(food_milk, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 620, -1, -1));
+        getContentPane().add(foodMilk, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 620, -1, -1));
 
         comboMood.setIcon(new javax.swing.ImageIcon(getClass().getResource("/catroomsimulation/resources/toy.png"))); // NOI18N
         comboMood.setToolTipText("Play and Pat me!");
@@ -345,35 +343,31 @@ public class CatRoom extends javax.swing.JFrame {
 //        toyLabel.setIcon(new ImageIcon(getClass().getResource("resources/mouse.gif")));
     }//GEN-LAST:event_toyLabelImgMouseClicked
 
-    private void milkLabelImgMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_milkLabelImgMouseClicked
+    private void milkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_milkMouseClicked
         health = new HealthDecorator(new MilkHealth(health));
         health.setHealth();
         labelImageVisibility(MilkImage);
         labelHealthIncrease("resources/health_+2.png");
-  
-    }//GEN-LAST:event_milkLabelImgMouseClicked
+    }//GEN-LAST:event_milkMouseClicked
 
     private void bgLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgLabelMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_bgLabelMouseClicked
 
-    private void foodLabelImgMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_foodLabelImgMouseClicked
+    private void foodMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_foodMouseClicked
         health = new HealthDecorator(new FoodHealth(health));
         health.setHealth();
-
         labelImageVisibility(FoodImage);
-        labelImageUpward(HealthIncreaseIcon);
         labelHealthIncrease("resources/health_+3.png");
-    }//GEN-LAST:event_foodLabelImgMouseClicked
+    }//GEN-LAST:event_foodMouseClicked
 
-    private void food_milkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_food_milkMouseClicked
+    private void foodMilkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_foodMilkMouseClicked
         health = new HealthDecorator(new MilkHealth(new FoodHealth(health)));
         health.setHealth();
-
         labelImageVisibility(FoodImage);
         labelImageVisibility(MilkImage);
         labelHealthIncrease("resources/health_+5.png");
-    }//GEN-LAST:event_food_milkMouseClicked
+    }//GEN-LAST:event_foodMilkMouseClicked
 
     private void comboMoodMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comboMoodMouseClicked
         MoodDecorator mooddecorator = new MoodDecorator(new PlayMood(new PatMood(new MoodProgress(MoodProgressBar))));
@@ -496,11 +490,11 @@ public class CatRoom extends javax.swing.JFrame {
     public javax.swing.JLabel catNameLabel;
     public javax.swing.JLabel comboMood;
     private javax.swing.JButton exitButton;
-    public javax.swing.JLabel foodLabelImg;
-    public javax.swing.JLabel food_milk;
+    public javax.swing.JLabel food;
+    public javax.swing.JLabel foodMilk;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
-    public javax.swing.JLabel milkLabelImg;
+    public javax.swing.JLabel milk;
     private javax.swing.JComboBox<String> musicBox;
     private javax.swing.JButton musicButton;
     public javax.swing.JLabel patLabelImg;
